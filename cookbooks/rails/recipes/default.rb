@@ -12,7 +12,7 @@ gem_package "bundler"
 # server_names: your domain name of your app
 # environment : environment of your app (ex: staging , production , test, development ...).
 
-common = {:name => "testviet", :app_root => "/home/rubyviet/www/testviet", :environment => "staging", :path_root => "/home/rubyviet", :user => "rubyviet", :server_names => "testviet.vn www.testviet.vn"}
+common = {:name => "visviet", :app_root => "/home/rubyviet/www/visviet", :environment => "staging", :path_root => "/home/rubyviet", :user => "rubyviet", :server_names => "vis.vn www.vis.vn www.vis.com"}
 
 directory common[:app_root] do
   owner common[:user]
