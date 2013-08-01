@@ -1,4 +1,4 @@
-user rubyviet;
+user <%= @node[:nginx][:user] %>;
 worker_processes  <%= @node[:nginx][:worker_processes] %>;
 
 error_log  /var/log/nginx/error.log;

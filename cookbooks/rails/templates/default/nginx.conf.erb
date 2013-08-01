@@ -1,36 +1,30 @@
-upstream <%= @name %> {
-  server unix:/tmp/<%= @name %>.sock fail_timeout=0;
+upstream <%= @app_name %> {
+  server unix:/tmp/<%= @app_name %>.sock fail_timeout=0;
 }
 
 server {
  
   listen 80;
-  server_name <%= @server_names %>;
+  server_name <%= @server_name %>;
   root <%= @app_root %>/current/public;
 
-  access_log	<%= @app_root %>/shared/log/access.log combined;
-  error_log   <%= @app_root %>/shared/log/error.log;
+  # Show a maintenance page if one exists.
+	if (-f $document_root/system/maintenance.html) {
+		rewrite ^(.*)$ /system/maintenance.html break;
+	}
   
-  location / {
-
-    if (-f $request_filename) {
-       break;
-     }
-
-     if (!-f $request_filename) {
-       proxy_pass http://<%= @name %>;
-       break;
-     }
-   }
+	try_files $uri/index.html $uri @<%= @app_name %>;
+	
+	location @<%= @app_name %> {
+		proxy_set_header Host $http_host;
+		if (!-f $request_filename) {
+			proxy_pass http://<%= @app_name %>;
+			break;
+		}
+	}
 
   error_page  500 502 503 504 /500.html;
-  error_page  404 /404.html;
 
-  location = /500.html {
-    root  <%= @app_root %>/current/public;
-  }
-
-  location = /400.html {
-    root  <%= @app_root %>/current/public;
-  }
+  access_log	<%= @app_root %>/shared/log/access.log;
+  error_log   <%= @app_root %>/shared/log/error.log;
 }

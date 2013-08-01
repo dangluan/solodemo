@@ -1,0 +1,9 @@
+default.monit[:monitrc_config_path] = "/etc/monit/monitrc"
+default.monit[:mysql_monit_config_path] = "/etc/monit/conf.d/mysql.monit"
+default.monit[:nginx_monit_config_path] = "/etc/monit/conf.d/nginx.monit"
+default.monit[:unicorn_monit_config_path] = "/etc/monit/conf.d/unicorn.monit"
+default.monit[:app_root] = "/home/rubyviet/www/monittest" #same as app_root in rails recipe
+default.monit[:user] = "rubyviet" #same as user in rails recipe
+default.monit[:env] = "staging" #same as environment in rails recipe
+default.monit[:pid_path] = "/home/rubyviet/www/monittest/shared/pids/monittest.pid"
+default.monit[:unicorn_executable_path] = "/etc/init.d/unicorn"

@@ -1,0 +1,9 @@
+default.rails[:app_name] = "monittest" #same as default[:rails][:app_name]
+default.rails[:app_root] = "/home/rubyviet/www/monittest"
+default.rails[:path_rool] = "/home/rubyviet"
+default.rails[:user] = "rubyviet"
+default.rails[:db_name] = "monittest"
+default.rails[:environment] = "staging"
+default.rails[:server_name] = "monit.com"
+default.rails[:data_config_path] =  "#{default.rails[:app_root]}/shared/config/database.yml"
+default.rails[:nginx_config_path] = "/etc/nginx/sites-available/#{default.rails[:app_name]}"

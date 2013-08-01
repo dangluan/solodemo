@@ -1,0 +1,4 @@
+check process unicorn_worker
+with pidfile <%= @pid_path %>
+start program = "/etc/init.d/unicorn start"
+stop program = "/etc/init.d/unicorn stop"

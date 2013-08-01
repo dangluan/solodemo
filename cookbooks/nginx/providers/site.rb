@@ -9,8 +9,8 @@ end
 action :enable do
   # TODO: create if not created
     
-  link "#{node[:nginx][:dir]}/sites-enabled/#{new_resource.name}.conf" do
-    to "#{node[:nginx][:dir]}/sites-available/#{new_resource.name}.conf"
+  link "#{node[:nginx][:dir]}/sites-enabled/#{new_resource.name}" do
+    to "#{node[:nginx][:dir]}/sites-available/#{new_resource.name}"
     
     notifies :reload, resources(:service => "nginx")
     
